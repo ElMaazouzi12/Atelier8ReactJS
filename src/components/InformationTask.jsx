@@ -1,19 +1,33 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 class InformationTask extends Component {
-    constructor(props) {
-        super(props);
-    }
-    state = {  }
-    render() { 
-        return ( 
-            <div className="numbers-container">
-                <div>Nombre Totale : {}</div>
-                <div>Nombre Termine : {}</div>
-                <div>Nombre En cours : {}</div>
-            </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="containerInfoTask">
+        <div>Nombre Totale : {this.props.toDo.length}</div>
+        <div>
+          Nombre Termine :{" "}
+          {
+            this.props.toDo.filter((item) => {
+              return item.completed === true;
+            }).length
+          }{" "}
+        </div>
+        <div>
+          Nombre En cours :{" "}
+          {
+            this.props.toDo.filter((item) => {
+              return item.completed === false;
+            }).length
+          }{" "}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default InformationTask;

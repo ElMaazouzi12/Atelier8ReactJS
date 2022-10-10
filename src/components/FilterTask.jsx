@@ -4,13 +4,13 @@ class FilterTask  extends Component {
     constructor(props) {
         super(props);
     }
-    state = {  }
+
     render() { 
         return ( 
             <div className="filter-btns">
-                <button>All</button>
-                <button>Termine</button>
-                <button>En cours</button>
+                <button onClick={this.props.filterTaskAll}>All</button>
+                <button onClick={this.props.filterTaskCompleted}>Termine</button>
+                <button onClick={this.props.filterTaskNotCompleted}>En cours</button>
             </div>
         );
     }
