@@ -1,19 +1,17 @@
-import React, {Component} from "react";
+import React from "react";
 
-class FilterTask  extends Component {
-    constructor(props) {
-        super(props);
-    }
+function FilterTask(props) {
+    
 
-    render() { 
-        return ( 
-            <div className="filter-btns">
-                <button onClick={this.props.filterTaskAll}>All</button>
-                <button onClick={this.props.filterTaskCompleted}>Termine</button>
-                <button onClick={this.props.filterTaskNotCompleted}>En cours</button>
-            </div>
-        );
-    }
+    return ( 
+        <div className="filter-btns">
+            <button onClick={props.filterTaskAll}>All</button>
+            <button onClick={props.filterTaskCompleted}>Termine</button>
+            <button onClick={props.filterTaskNotCompleted}>En cours</button>
+        </div>
+    )
 }
+
+
 
 export default FilterTask;

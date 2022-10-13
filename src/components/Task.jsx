@@ -1,7 +1,5 @@
 import {
   faCheck,
-  faCircle,
-  faPeace,
   faPen,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
@@ -16,12 +14,13 @@ class Task extends Component {
   render() {
     return (
       <div className="task-container">
-        {this.props.toDo && this.props.toDo.length ? "" : "No Task..."}
-        {this.props.toDo.map((task, index) => {
+        {this.props.toDo
+        .sort((a, b) => a.id > b.id ? 1 : -1)
+        .map((task, index) => {
           return (
             <React.Fragment>
               <div className="taskBg">
-                <div className={task.completed ? "done" : ""}>
+                <div className={task.completed ? "done" : "fall"}>
                   <span className="taskNumber">{index + 1}</span>
                   <span className="taskText">{task.description}</span>
                 </div>
@@ -30,11 +29,16 @@ class Task extends Component {
                     <FontAwesomeIcon icon={faCheck} />
                   </span>
                   {task.completed ? null : (
-                    <span>
+                    <span onClick={() =>this.props.handleForUpdate({
+                      id : task.id,
+                      description : task.description,
+                      completed : task.completed ? true : false
+                    })}>
                       <FontAwesomeIcon icon={faPen} />
                     </span>
                   )}
-                  <span onClick={() => this.props.deleteTask(task.id)}>
+                  <span className="delete-btn" onClick={() => {this.props.deleteTask(task.id);
+                    }}>
                     <FontAwesomeIcon icon={faTrashCan} />
                   </span>
                 </div>
